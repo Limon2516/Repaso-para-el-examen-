@@ -1,0 +1,34 @@
+# include <stdio.h>
+
+int main (){
+	char caracter;
+	int count; 
+	bool condition;
+	FILE *file = fopen ("Sin Nombre2.cpp", "rb");
+	
+	if (file == NULL)
+	{
+		perror ("Error en la apertura del archvo");
+		return 1; 
+	}
+	
+	count = 0;
+	condition = false;
+	while (feof(file) == 0)
+	{
+		caracter = fgetc(file);
+		
+		if(caracter == '\n')
+		condition = true; 
+		
+		if (!condition)
+		if (caracter == ',')
+		count++;
+	}
+	printf("%d", count);
+	
+	fclose(file);
+	printf("\n\nTodo esta viendo en popa...\n\n\n\n");
+	
+	return 0; 
+}
